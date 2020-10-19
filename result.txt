@@ -1,0 +1,40 @@
+Waiting For Threads to Finish...
+TensorFlow Predicted unknown_images/1.png is a Block with 70.42% Accuracy
+TensorFlow Predicted unknown_images/5.png is a Block with 99.58% Accuracy
+TensorFlow Predicted unknown_images/7.png is a Block with 99.84% Accuracy
+TensorFlow Predicted unknown_images/4.png is a Block with 98.98% Accuracy
+TensorFlow Predicted unknown_images/2.png is a Block with 99.00% Accuracy
+TensorFlow Predicted unknown_images/11.png is a Block with 100.00% Accuracy
+TensorFlow Predicted unknown_images/9.png is a Block with 99.66% Accuracy
+TensorFlow Predicted unknown_images/3.png is a Block with 99.69% Accuracy
+TensorFlow Predicted unknown_images/6.png is a Block with 99.01% Accuracy
+TensorFlow Predicted unknown_images/8.png is a Block with 98.94% Accuracy
+TensorFlow Predicted unknown_images/10.png is a Block with 100.00% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_090542.png is a Normal with 99.80% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_090708.png is a Normal with 99.95% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_093556.png is a Normal with 99.99% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_090906.png is a Normal with 100.00% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_092404.png is a Normal with 98.71% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_094620.png is a Normal with 64.43% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_091418.png is a Normal with 99.71% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_100656.png is a Normal with 99.49% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_093220.png is a Normal with 100.00% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_100644.png is a Normal with 99.99% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_102056.png is a Normal with 97.74% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_103058.png is a Normal with 99.91% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_104938.png is a Normal with 98.69% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_111612.png is a Normal with 95.75% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_111644.png is a Normal with 99.99% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_113208.png is a Normal with 97.58% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_113216.png is a Normal with 99.87% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_113210.png is a Normal with 97.98% Accuracy
+
+=====================
+다른 시간대 cell map 정보 오류 오차율 5/8119
+
+Waiting For Threads to Finish...
+TensorFlow Predicted unknown_images/CellMap_0413_142804.png is a Block with 77.48% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_143138.png is a Block with 52.30% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_144130.png is a Block with 86.51% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_161210.png is a Block with 90.32% Accuracy
+TensorFlow Predicted unknown_images/CellMap_0413_170228.png is a Block with 64.52% Accuracy
