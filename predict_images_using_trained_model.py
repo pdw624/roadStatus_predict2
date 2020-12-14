@@ -15,6 +15,7 @@ import queue
 import time
 import sys
 import socket
+import math
 # sudo apt install python3-pip
 # sudo python3 -m pip install --upgrade pip
 # sudo python3 -m pip install --upgrade setuptools
@@ -60,19 +61,8 @@ def read_tensor_from_image_bytes(imagebytes, input_height=299, input_width=299, 
     return result
 
 def main():
+
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
-    #TAG_IMAGE_FILE = '1.2.png'
-    #file_name = r"D:/rec_tf_final_park/TF/unknown_images/"+TAG_IMAGE_FILE
-    #print('file_name', file_name)
-
-    #net_filename = file_name.encode()
-    #sock.sendto(net_filename, ("192.168.34.233", 9999))
-    #print("Sending {} ...".format(file_name))
-
-    #f = open(file_name,"rb")
-    #data = f.read(1024)
-
 
     while True:
         #TAG_IMAGE_FILE = 'apple10.png'
@@ -95,6 +85,8 @@ def main():
         # Loading the Trained Machine Learning Model created from running retrain.py on the training_images directory
         graph = load_graph('/tmp/retrain_tmp/output_graph.pb')
         labels = load_labels("/tmp/retrain_tmp/output_labels.txt")
+        #graph = load_graph('D:\AI/output_graph.pb')
+        #labels = load_labels("D:\AI/output_labels.txt")
 
         # Load up our session
         input_operation = graph.get_operation_by_name("import/Placeholder")
@@ -103,16 +95,20 @@ def main():
 
         # Can use queues and threading to spead up the processing
         q = queue.Queue()
-        unknown_images_dir = 'unknown_images'
+ 
+        #첫번째 디렉토리
+        unknown_images_dir = "C:/Img2"
         unknown_images = os.listdir(unknown_images_dir)
 
-        normal_images = [file for file in unknown_images if file.startswith("1.")]###unknown_images -> normal_images
+        normal_images = [file for file in unknown_images if file.startswith("predict")]###unknown_images -> normal_images
+
 
         if not normal_images:###unknown_images -> normal_images
             #print("no files in unknown_images!!!")###unknown_images -> normal_images
-            print("no '1.' files in unknown_images!!!")###unknown_images -> normal_images
+            print("no 'Normal.' files in unknown_images!!!")###unknown_images -> normal_images
         else:
             #Going to interate over each of our images.
+            #첫번째 디렉토리 predict
             for image in normal_images:###unknown_images -> normal_images
                 img_full_path = '{}/{}'.format(unknown_images_dir, image)
         
@@ -124,9 +120,11 @@ def main():
                 #predict_image function is expecting png image bytes so we read image as 'rb' to get a bytes object
                 image_bytes = open(img_full_path,'rb').read()
                 threading.Thread(target=predict_image, args=(q, sess, graph, image_bytes, img_full_path, labels, input_operation, output_operation)).start()
-                
+
+            
 
             print('Waiting For Threads to Finish...')
+         
             while q.qsize() < len(normal_images):###unknown_images -> normal_images
                 time.sleep(0.001)
         
@@ -141,16 +139,26 @@ def main():
 
             #percent 값 send 후 img 파일 삭제
             for index, prediction in enumerate(prediction_results):
-                division = prediction_results[index]['prediction']
-                percent = format(prediction_results[index]['percent']*100,".2f")
+                division = prediction_results[index]['prediction'][0:1]
+                #division = division[0:1]##보낼 구분자
+                
+                #percent = format(prediction_results[index]['percent']*100,".2f")
+                percent = format(prediction_results[index]['percent']*100, ".0f")
 
-                division_percent = division +"/"+ percent
-
-                sock.sendto(division_percent.encode() ,("192.168.34.233", 9999))
+                print("구분 : "+division)
+                print("퍼센트 : "+percent)
+                
+                division_percent = division+percent
+                
+                sock.sendto(division_percent.encode() ,("127.0.0.1", 15202))
+  
+               
                 print('TensorFlow Predicted {img_full_path} is a {prediction} with {percent:.2%} Accuracy'.format(**prediction))
                 #print(index, prediction)
-                os.remove("./"+prediction_results[index]['img_full_path'])
-            
 
+                os.remove(prediction_results[index]['img_full_path'])
+            
+            
+            
 if __name__ == "__main__":
     main()
